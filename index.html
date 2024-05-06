@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product quantity</title>
+    <style>
+        body{
+            background-color: azure;
+            margin: 10px 100px;
+
+        }
+        .card{
+            width: 25%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            border-radius: 20px;
+        }
+        .img{
+            width: 90%;
+            height: 200px;
+            margin: 12px;
+            border-radius: 20px;
+            margin-bottom: 0;
+
+        }
+        .card_body{
+            margin: 0 10px;
+        }
+        .description{
+            font-size:13px;
+        }
+        .container{
+            margin-left: 10px;
+            margin-top:0;
+            padding: 0;
+        }
+        h1{
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .price{
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .btn5{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        .btns{
+            padding: 0px 5px;
+            margin: 0 5px;
+        }
+        .buy{
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            background-color: black;
+            color: #fff;
+            margin: 5px 70px;
+        }
+    </style>
+</head>
+<body >
+    <div class="card">
+        <img src="./img/shoes.webp" class="img"/>
+        <div class="card_body">
+            <h1>Puma shoes</h1>
+            <p class="description">Puma shoes intended to protect and comfort the human foot</p>
+            <p class="price">₹ 599-/</p>
+            <p id="show-quantity">1 x 2999</p>
+            <p id="show-total">Total: 2999</p>
+        <div class="container">
+        <div class="btn5">   
+            <button class="btns" onclick="dec()">-</button>
+            <span id="quantity">1</span>
+            <button class="btns" onclick="inc()">
+                +
+            </button>
+        </div>
+        </div>
+        <button class="buy">Buy Now</button>
+    </div>
+    <script>
+        const quantityText=document.getElementById("quantity");
+        const showQuantity=document.getElementById("show-quantity");
+        const showTotal=document.getElementById("show-total");
+
+        function inc(){
+            let quantityExact=parseInt(quantityText.innerText);
+
+            if(quantityExact<10){
+                quantityText.innerText= ++quantityExact;
+            }
+            else{
+                alert("You can't add more than 10 items")
+            }
+            showQuantity.innerText=`${quantityExact} x 2999`;
+            showTotal.innerText=`Total: ${quantityExact * 2999}`;
+        }
+
+        function dec(){
+            let quantityExact=parseInt(quantityText.innerText);
+
+            if(quantityExact>1){
+                quantityText.innerText= --quantityExact;
+            }
+            else{
+                alert("You can't decrease item quantity to 0")
+            }
+            showQuantity.innerText=`${quantityExact} x 2999`;
+            showTotal.innerText=`Total: ${quantityExact * 2999}`;
+        }
+    </script>
+</body>
+</html>
